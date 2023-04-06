@@ -5,13 +5,13 @@ while (((nCards % 2) !== 0) || nCards < 4 || nCards > 14) {
 }
 
 const parrots = [
-    "./images/img1.gif",
-    "./images/img2.gif",
-    "./images/img3.gif",
-    "./images/img4.gif",
-    "./images/img5.gif",
-    "./images/img6.gif",
-    "./images/img7.gif",
+    "images/img1.gif",
+    "images/img2.gif",
+    "images/img3.gif",
+    "images/img4.gif",
+    "images/img5.gif",
+    "images/img6.gif",
+    "images/img7.gif",
 ];
 
 const rParrots = [];
