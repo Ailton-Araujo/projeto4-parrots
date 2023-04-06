@@ -5,13 +5,13 @@ while (((nCards % 2) !== 0) || nCards < 4 || nCards > 14) {
 }
 
 const parrots = [
-    "images/img1.gif",
-    "images/img2.gif",
-    "images/img3.gif",
-    "images/img4.gif",
-    "images/img5.gif",
-    "images/img6.gif",
-    "images/img7.gif",
+    "./images/img1.gif",
+    "./images/img2.gif",
+    "./images/img3.gif",
+    "./images/img4.gif",
+    "./images/img5.gif",
+    "./images/img6.gif",
+    "./images/img7.gif",
 ];
 
 const rParrots = [];
@@ -19,8 +19,8 @@ const rParrots = [];
 /* Prefiro usar o Fisher Yates shuffle como metodo de randomização*/
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
-        let j = Math.floor(Math.random() * (i + 1));
-        let temp = array[i];
+        const j = Math.floor(Math.random() * (i + 1));
+        const temp = array[i];
         array[i] = array[j];
         array[j] = temp;
     }
@@ -53,12 +53,19 @@ function addCards() {
     }
 }
 
-addCards()
+addCards();
 
 let rounds = 0;
 let flippedCards = 0;
 let flipedPar = 0;
 let srcCard = "";
+let time = 0;
+
+function timer(num){
+    time++;
+}
+
+const idInterval = setInterval(timer, 1000);
 
 function checkPar(srcw, card){
     if (srcw.querySelector('img').src === card.querySelector('.back-face>img').src){
@@ -67,12 +74,13 @@ function checkPar(srcw, card){
         flipedPar++;
     }else if(srcw.querySelector('img').src !== card.querySelector('.back-face>img').src){
         srcCard = "";
-        srcw.parentNode.classList.remove('card-flipped');
-        card.classList.remove('card-flipped');
-        flippedCards = 0;
+        setTimeout( () => {srcw.parentNode.classList.remove('card-flipped')}, 1000);
+        setTimeout( () => {card.classList.remove('card-flipped')}, 1000);
+        setTimeout( () => {flippedCards = 0;}, 1000);
     }
     if(flipedPar === nCards/2){
-        prompt(`Você ganhou em ${rounds} jogadas! A duração do jogo foi de Y segundos!`)
+        alert(`Você ganhou em ${rounds} jogadas! A duração do jogo foi de ${time} segundos!`);
+        clearInterval(idInterval);
     }
 }
 
@@ -86,6 +94,6 @@ function flipCard(selecionado) {
         selecionado.classList.add('card-flipped');
         flippedCards++;
         rounds++;
-        setTimeout(checkPar, 1000, srcCard, selecionado)
+        checkPar(srcCard, selecionado);
     }
 }
