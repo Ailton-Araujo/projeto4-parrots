@@ -9,13 +9,13 @@ body {
 }
 
 header {
-    padding-top: 40px;
-    padding-bottom: 60px;
+    padding: 40px 0px 60px;
     font-weight: 700;
     font-size: 56px;
     line-height: 66px;
     text-align: center;
     color: #75B79E;
+    position: relative;
 }
 
 .container {
@@ -25,6 +25,26 @@ header {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+}
+
+.cronometro {
+    width: 80px;
+    height: 53px;
+    border: 2px solid #FF0000;
+    position: absolute;
+    top: 20px;
+    right: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cronometro p{
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 42px;
+    text-align: center;
+    color: #86BD8D;
 }
 
 .card {
@@ -57,16 +77,15 @@ header {
     transform: rotateY(180deg);
 }
 
-.card-flipped > .back-face {
+.card-flipped>.back-face {
     transform: rotateY(0deg);
 }
-.card-flipped > .front-face {
+
+.card-flipped>.front-face {
     transform: rotateY(-180deg);
 }
 
-
-
-@media (max-width: 375px) {
+@media (orientation: portrait) {
     header {
         padding-bottom: 35px;
         font-size: 36px;
@@ -74,6 +93,16 @@ header {
     }
 
     .container {
-        margin: 0px 30%;
+        margin: 0px 25%;
+    }
+
+    .cronometro {
+        top: 80px;
+        right: 16px;
+        font-weight: 700;
+        font-size: 36px;
+        line-height: 42px;
+        text-align: center;
+        color: #86BD8D;
     }
 }

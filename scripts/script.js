@@ -61,25 +61,26 @@ let flipedPar = 0;
 let srcCard = "";
 let time = 0;
 
-function timer(num){
+function timer(){
     time++;
+    document.querySelector('.cronometro>p').innerHTML = time;
 }
 
 const idInterval = setInterval(timer, 1000);
 
-function checkPar(srcw, card){
-    if (srcw.querySelector('img').src === card.querySelector('.back-face>img').src){
+function checkPar(srcFirst, card){
+    if (srcFirst.querySelector('img').src === card.querySelector('.back-face>img').src){
         srcCard = "";
         flippedCards = 0;
         flipedPar++;
-    }else if(srcw.querySelector('img').src !== card.querySelector('.back-face>img').src){
+    }else if(srcFirst.querySelector('img').src !== card.querySelector('.back-face>img').src){
         srcCard = "";
-        setTimeout( () => {srcw.parentNode.classList.remove('card-flipped')}, 1000);
-        setTimeout( () => {card.classList.remove('card-flipped')}, 1000);
+        setTimeout( () => {srcFirst.parentNode.classList.remove('card-flipped');}, 1000);
+        setTimeout( () => {card.classList.remove('card-flipped');}, 1000);
         setTimeout( () => {flippedCards = 0;}, 1000);
     }
     if(flipedPar === nCards/2){
-        alert(`Você ganhou em ${rounds} jogadas! A duração do jogo foi de ${time} segundos!`);
+        setTimeout( () => {alert(`Você ganhou em ${rounds} jogadas! A duração do jogo foi de ${time} segundos!`);}, 300);
         clearInterval(idInterval);
     }
 }
