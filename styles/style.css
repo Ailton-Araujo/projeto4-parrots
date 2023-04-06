@@ -57,19 +57,23 @@ header {
     transform: rotateY(180deg);
 }
 
-.card-fliped > .back-face {
+.card-flipped > .back-face {
     transform: rotateY(0deg);
 }
-.card-fliped > .front-face {
+.card-flipped > .front-face {
     transform: rotateY(-180deg);
 }
 
 
 
-@media (max-width: 600px) {
+@media (max-width: 375px) {
     header {
         padding-bottom: 35px;
         font-size: 36px;
         line-height: 42px;
+    }
+
+    .container {
+        margin: 0px 30%;
     }
 }
