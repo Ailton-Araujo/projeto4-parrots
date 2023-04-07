@@ -102,7 +102,7 @@ function flipCard(selecionado) {
 
 function checkGame() {
     while(statusGame === 1){
-        let resetStatus = prompt("Você gostatia de jogar novamente?\nDigite sim ou não.");
+        let resetStatus = prompt("Você gostatia de reiniciar a partida? (sim ou não)");
         if (resetStatus === 'sim') {
             statusGame = 0;
             nCards = 0;
