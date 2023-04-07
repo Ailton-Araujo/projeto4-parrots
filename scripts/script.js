@@ -102,7 +102,7 @@ function flipCard(selecionado) {
 
 function checkGame() {
     while(statusGame === 1){
-        let resetStatus = prompt("Você gostatia de reiniciar a partida? (sim ou não)");
+        const resetStatus = prompt("Você gostatia de reiniciar a partida? (sim ou não)");
         if (resetStatus === 'sim') {
             statusGame = 0;
             nCards = 0;
@@ -112,12 +112,9 @@ function checkGame() {
             srcCard = "";
             time = 0;
             statusGame = 0;
-    
             rParrots.length = 0;
-    
             document.querySelector('.container').innerHTML = "";
-    
-            numberCards();4
+            numberCards();
             addCards();
             idInterval = setInterval(timer, 1000);
             break;
