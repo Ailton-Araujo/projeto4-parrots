@@ -28,8 +28,8 @@ function shuffleArray(array) {
     }
 }
 
-function randomParrots(num) {
-    const temp = parrots.slice();
+function randomParrots(num, array) {
+    const temp = array;
     shuffleArray(temp);
     for (let i = 0; i < (num / 2); i++) {
         rParrots.push(temp[i]);
@@ -46,17 +46,17 @@ function numberCards() {
 }
 
 function addCards() {
-    randomParrots(nCards);
+    randomParrots(nCards, parrots);
     let cont = 0;
     const game = document.querySelector('.container');
     while (cont < nCards) {
         game.innerHTML += `
         <div data-test="card" onclick="flipCard(this)" class="card">
             <div class="front-face face">
-                <img data-test="face-down-image" src="./images/back.png" alt="">
+                <img data-test="face-down-image" src="./images/back.png" draggable="false" (dragstart)="false;" alt="">
             </div>
             <div class="back-face face">
-                <img data-test="face-up-image" src="${rParrots[cont]}" alt="">
+                <img data-test="face-up-image" src="${rParrots[cont]}" draggable="false" (dragstart)="false;" alt="">
             </div>
         </div>`;
         cont++;
@@ -65,7 +65,7 @@ function addCards() {
 
 function timer() {
     time++;
-    document.querySelector('.cronometro>p').innerHTML = time;
+    document.querySelector('.timer>p').innerHTML = time;
 }
 
 function checkPar(srcFirst, card) {
@@ -75,8 +75,10 @@ function checkPar(srcFirst, card) {
         flipedPar++;
     } else if (srcFirst.querySelector('img').src !== card.querySelector('.back-face>img').src) {
         srcCard = "";
-        setTimeout(() => { srcFirst.parentNode.classList.remove('card-flipped'); }, 1000);
-        setTimeout(() => { card.classList.remove('card-flipped'); }, 1000);
+        setTimeout(() => {
+            srcFirst.parentNode.classList.remove('card-flipped');
+            card.classList.remove('card-flipped');
+        }, 1000);
         setTimeout(() => { flippedCards = 0; }, 1000);
     }
     if (flipedPar === nCards / 2) {
@@ -101,7 +103,7 @@ function flipCard(selecionado) {
 }
 
 function checkGame() {
-    while(statusGame === 1){
+    while (statusGame === 1) {
         const resetStatus = prompt("Você gostaria de reiniciar a partida? (sim ou não)");
         if (resetStatus === 'sim') {
             statusGame = 0;
